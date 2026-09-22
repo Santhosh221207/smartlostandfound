@@ -404,10 +404,10 @@ function Field({
 }: {
   label: string;
   htmlFor: string;
-  required?: boolean;
-  error?: string;
-  hint?: string;
-  className?: string;
+  required?: boolean | undefined;
+  error?: string | undefined;
+  hint?: string | undefined;
+  className?: string | undefined;
   children: React.ReactNode;
 }) {
   return (

@@ -21,7 +21,7 @@ export function ClaimDialog({ report, trigger }: { report: Report; trigger: Reac
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
   const [sending, setSending] = useState(false);
   const [done, setDone] = useState(false);
 
@@ -29,7 +29,7 @@ export function ClaimDialog({ report, trigger }: { report: Report; trigger: Reac
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    const next: Record<string, string> = {};
+    const next: { name?: string; email?: string; message?: string } = {};
     if (!name.trim()) next.name = "Please enter your name.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) next.email = "Enter a valid email.";
     if (message.trim().length < 10) next.message = "Add a short message (10+ characters).";
