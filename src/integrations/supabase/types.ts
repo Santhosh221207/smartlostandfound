@@ -14,7 +14,98 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      claims: {
+        Row: {
+          claimant_email: string
+          claimant_name: string
+          created_at: string
+          id: string
+          message: string
+          report_id: string
+        }
+        Insert: {
+          claimant_email: string
+          claimant_name: string
+          created_at?: string
+          id?: string
+          message: string
+          report_id: string
+        }
+        Update: {
+          claimant_email?: string
+          claimant_name?: string
+          created_at?: string
+          id?: string
+          message?: string
+          report_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "claims_report_id_fkey"
+            columns: ["report_id"]
+            isOneToOne: false
+            referencedRelation: "reports"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      reports: {
+        Row: {
+          category: string
+          contact_email: string | null
+          contact_name: string
+          contact_phone: string | null
+          created_at: string
+          description: string
+          id: string
+          identifying_details: string | null
+          image_url: string | null
+          is_demo: boolean
+          item_date: string
+          item_name: string
+          item_time: string | null
+          location: string
+          report_type: Database["public"]["Enums"]["report_type"]
+          status: Database["public"]["Enums"]["report_status"]
+        }
+        Insert: {
+          category: string
+          contact_email?: string | null
+          contact_name: string
+          contact_phone?: string | null
+          created_at?: string
+          description: string
+          id?: string
+          identifying_details?: string | null
+          image_url?: string | null
+          is_demo?: boolean
+          item_date: string
+          item_name: string
+          item_time?: string | null
+          location: string
+          report_type: Database["public"]["Enums"]["report_type"]
+          status?: Database["public"]["Enums"]["report_status"]
+        }
+        Update: {
+          category?: string
+          contact_email?: string | null
+          contact_name?: string
+          contact_phone?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          identifying_details?: string | null
+          image_url?: string | null
+          is_demo?: boolean
+          item_date?: string
+          item_name?: string
+          item_time?: string | null
+          location?: string
+          report_type?: Database["public"]["Enums"]["report_type"]
+          status?: Database["public"]["Enums"]["report_status"]
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +114,8 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      report_status: "active" | "matched" | "claimed" | "resolved"
+      report_type: "lost" | "found"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +242,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      report_status: ["active", "matched", "claimed", "resolved"],
+      report_type: ["lost", "found"],
+    },
   },
 } as const
