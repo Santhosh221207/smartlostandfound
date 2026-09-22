@@ -36,7 +36,11 @@ export const Route = createFileRoute("/item/$id")({
 
 function ItemDetail() {
   const { id } = Route.useParams();
-  const { data: report, isLoading, isError } = useQuery({
+  const {
+    data: report,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["report", id],
     queryFn: () => fetchReport(id),
   });
@@ -195,15 +199,7 @@ function ItemDetail() {
   );
 }
 
-function Detail({
-  icon: Icon,
-  label,
-  value,
-}: {
-  icon: typeof Tag;
-  label: string;
-  value: string;
-}) {
+function Detail({ icon: Icon, label, value }: { icon: typeof Tag; label: string; value: string }) {
   return (
     <div className="flex gap-3">
       <Icon className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />

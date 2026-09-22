@@ -106,7 +106,14 @@ function Dashboard() {
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={byCategory} margin={{ left: -20 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-                  <XAxis dataKey="name" tick={{ fontSize: 11 }} interval={0} angle={-25} dy={10} height={60} />
+                  <XAxis
+                    dataKey="name"
+                    tick={{ fontSize: 11 }}
+                    interval={0}
+                    angle={-25}
+                    dy={10}
+                    height={60}
+                  />
                   <YAxis allowDecimals={false} tick={{ fontSize: 11 }} />
                   <Tooltip
                     contentStyle={{
@@ -131,7 +138,14 @@ function Dashboard() {
             ) : (
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
-                  <Pie data={statusData} dataKey="value" nameKey="name" innerRadius={55} outerRadius={95} paddingAngle={3}>
+                  <Pie
+                    data={statusData}
+                    dataKey="value"
+                    nameKey="name"
+                    innerRadius={55}
+                    outerRadius={95}
+                    paddingAngle={3}
+                  >
                     {statusData.map((entry, i) => (
                       <Cell key={entry.name} fill={pieColors[i % pieColors.length]} />
                     ))}

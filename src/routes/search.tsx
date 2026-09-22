@@ -54,7 +54,10 @@ function SearchPage() {
     const q = query.trim().toLowerCase();
     const loc = location.trim().toLowerCase();
     return (data ?? []).filter((r) => {
-      if (q && !`${r.item_name} ${r.description} ${r.identifying_details ?? ""}`.toLowerCase().includes(q))
+      if (
+        q &&
+        !`${r.item_name} ${r.description} ${r.identifying_details ?? ""}`.toLowerCase().includes(q)
+      )
         return false;
       if (type !== ALL && r.report_type !== type) return false;
       if (category !== ALL && r.category !== category) return false;

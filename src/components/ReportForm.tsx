@@ -139,7 +139,9 @@ export function ReportForm({ type }: { type: ReportType }) {
       });
       await queryClient.invalidateQueries({ queryKey: ["reports"] });
       setCreatedId(id);
-      toast.success(isLost ? "Lost item reported successfully." : "Found item reported successfully.");
+      toast.success(
+        isLost ? "Lost item reported successfully." : "Found item reported successfully.",
+      );
     } catch (error) {
       toast.error(
         error instanceof FriendlyError

@@ -1,12 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowRight,
-  ClipboardList,
-  Database,
-  HandHeart,
-  Search,
-  Sparkle,
-} from "lucide-react";
+import { ArrowRight, ClipboardList, Database, HandHeart, Search, Sparkle } from "lucide-react";
 import heroImage from "@/assets/hero-items.jpg";
 import { Button } from "@/components/ui/button";
 import { ItemCard } from "@/components/ItemCard";

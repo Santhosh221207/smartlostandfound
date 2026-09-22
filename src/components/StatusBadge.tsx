@@ -6,9 +6,7 @@ export function TypeBadge({ type, className }: { type: ReportType; className?: s
     <span
       className={cn(
         "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold tracking-wide uppercase",
-        type === "lost"
-          ? "bg-lost text-lost-foreground"
-          : "bg-found text-found-foreground",
+        type === "lost" ? "bg-lost text-lost-foreground" : "bg-found text-found-foreground",
         className,
       )}
     >
